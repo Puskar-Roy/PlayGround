@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+
 import {
   Dialog,
   DialogContent,
@@ -21,21 +22,22 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import Fileupload from "@/components/file-upload";
 
 const formSchema = z.object({
   name: z.string().min(1, {
-    message: "Server Name Is Required!",
+    message: "PlayGround Name Is Required!",
   }),
   imageUrl: z.string().min(1, {
-    message: "Server Image Is Required!",
+    message: "PlayGround Image Is Required!",
   }),
 });
 
 const Initialmodal = () => {
-    const [isMounted , setMounted] = useState(false)
-    useEffect(()=>{
-        setMounted(true);
-    },[])
+  const [isMounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -49,7 +51,7 @@ const Initialmodal = () => {
   const detailsOnSubmit = async (values: z.infer<typeof formSchema>) => {
     alert("Server Ditails Submiting !");
   };
-  if(!isMounted){
+  if (!isMounted) {
     return null;
   }
   return (
@@ -71,7 +73,17 @@ const Initialmodal = () => {
           >
             <div className="space-y-8 px-6">
               <div className="flex items-center justify-center text-center">
-                TODO : Image Upload !
+                <FormField
+                  control={form.control}
+                  name="imageUrl"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Fileupload endpoint="serverImage" onChange={field.onChange} value={field.value} />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
               </div>
               <FormField
                 name="name"
@@ -89,7 +101,7 @@ const Initialmodal = () => {
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage/>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
