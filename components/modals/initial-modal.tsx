@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-
+import axios from 'axios'
+import { useRouter } from 'next/navigation'
 import {
   Dialog,
   DialogContent,
@@ -35,6 +36,7 @@ const formSchema = z.object({
 
 const Initialmodal = () => {
   const [isMounted, setMounted] = useState(false);
+  const router = useRouter();
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -49,7 +51,17 @@ const Initialmodal = () => {
   const isLoading = form.formState.isSubmitting;
 
   const detailsOnSubmit = async (values: z.infer<typeof formSchema>) => {
-    alert("Server Ditails Submiting !");
+    try {
+      await axios.post("/api/servers",values);
+      form.reset();
+      router.refresh();
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+      
+    }
+
+
   };
   if (!isMounted) {
     return null;
