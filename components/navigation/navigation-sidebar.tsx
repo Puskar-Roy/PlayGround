@@ -1,8 +1,8 @@
 import React from 'react'
 import { currentProfile } from '../../lib/current-profile';
 import { redirect } from 'next/navigation';
-import { db } from '../../lib/db';
-import NavigationAction from './navigation-action'
+import { db } from '../../lib/db.ts';
+import NavigationAction from './navigation-action.tsx'
 
 const Navigationsidebar = async () => {
     const profile = await currentProfile();

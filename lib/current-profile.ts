@@ -1,5 +1,5 @@
 import { auth } from '@clerk/nextjs';
-import { db } from './db';
+import { db } from './db.ts';
 
 
 export const currentProfile = async () => {

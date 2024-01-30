@@ -1,6 +1,6 @@
 import React from 'react'
 import { Plus } from 'lucide-react'
-import Actiontooltip from '../action-tooltip';
+import Actiontooltip from '../action-tooltip.tsx';
 
 const NavigationAction = () => {
   return (
