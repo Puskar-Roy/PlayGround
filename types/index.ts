@@ -6,7 +6,7 @@ export interface FileUploadProps{
 }
 
 export interface ActionTooltipProps{
-    lable:string;
+    label:string;
     children:React.ReactNode;
     side?:"top" | "right" | "bottom" | "left";
     align?: "start" | "center" | "end";
