@@ -4,3 +4,10 @@ export interface FileUploadProps{
     endpoint : 'messageFile' | 'serverImage'
 
 }
+
+export interface ActionTooltipProps{
+    lable:string;
+    children:React.ReactNode;
+    side?:"top" | "right" | "bottom" | "left";
+    align?: "start" | "center" | "end";
+}
