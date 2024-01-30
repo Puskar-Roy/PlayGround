@@ -1,5 +1,5 @@
 import { currentUser , redirectToSignIn } from "@clerk/nextjs";
-import { db } from '@/lib/db.ts'
+import { db } from './db';
 
 
 
