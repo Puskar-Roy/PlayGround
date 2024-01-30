@@ -4,7 +4,7 @@ import { Tooltip , TooltipContent , TooltipProvider , TooltipTrigger } from '../
 import { ActionTooltipProps } from '../types/index'
 
 
-const Actiontooltip = ({ label , children , side , align }:Actiontooltip) => {
+const Actiontooltip = ({ label , children , side , align }: ActionTooltipProps) => {
   return (
     <TooltipProvider>
       <Tooltip delayDuration={50}>
